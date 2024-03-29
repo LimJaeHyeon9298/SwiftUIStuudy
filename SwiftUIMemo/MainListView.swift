@@ -14,9 +14,24 @@ struct MainListView: View {
     
     
     var body: some View {
-        List(store.list) { memo in
-            Text(memo.content)
+        
+        NavigationView {
+            List(store.list) { memo in
+                VStack(alignment:.leading) {
+                    Text(memo.content)
+                        .font(.body)
+                        .lineLimit(1)
+                    
+                    Text(memo.insertDate,style: .date)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+               
+            }
+            .listStyle(.plain)
+            .navigationTitle("내 메모")
         }
+        
       
     }
 }
